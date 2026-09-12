@@ -90,7 +90,10 @@ class UserIntegrationTest {
     assertThat(body.getUser().getId()).isNotNull();
     assertThat(body.getUser().getEmail()).isEqualTo(email);
     assertThat(body.getUser().getFullName()).isEqualTo(fullName);
-    assertThat(body.getUser().getRole()).isEqualTo(Role.CUSTOMER);
+    // Normally CUSTOMER, but if this shared database has no ADMIN yet the bootstrap rule in
+    // AuthService promotes this first registration to ADMIN. Both are correct depending on the
+    // state of the database; AuthServiceTest pins down each branch deterministically.
+    assertThat(body.getUser().getRole()).isIn(Role.CUSTOMER, Role.ADMIN);
     assertThat(body.getUser().isActive()).isTrue();
 
     registeredUserId = body.getUser().getId();

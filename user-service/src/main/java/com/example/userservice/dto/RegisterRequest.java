@@ -25,7 +25,9 @@ public class RegisterRequest {
   private String phoneNumber;
 
   /**
-   * Optional. Only CUSTOMER or VENDOR may self-register; ADMIN is rejected. Defaults to CUSTOMER.
+   * Optional, defaults to CUSTOMER. ADMIN cannot be claimed here and is rejected with 400. The one
+   * exception is the bootstrap case: while the system has no ADMIN at all, the next account to
+   * register is promoted to ADMIN whatever this field says.
    */
   private Role role;
 

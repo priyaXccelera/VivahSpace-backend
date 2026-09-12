@@ -8,6 +8,7 @@ import com.example.userservice.entity.Role;
 import com.example.userservice.entity.User;
 import com.example.userservice.exception.EmailAlreadyExistsException;
 import com.example.userservice.exception.InvalidCredentialsException;
+import com.example.userservice.exception.InvalidRoleException;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.security.JwtService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,12 +40,26 @@ public class AuthService {
 
     Role requestedRole = request.getRole() == null ? Role.CUSTOMER : request.getRole();
 
+    // Bootstrap rule: the very first account on a system that has no ADMIN yet becomes the ADMIN,
+    // so a fresh deployment always ends up with an owner. Once an ADMIN exists nobody can claim
+    // that role through the public registration endpoint.
+    Role effectiveRole;
+    if (!userRepository.existsByRole(Role.ADMIN)) {
+      effectiveRole = Role.ADMIN;
+    } else if (requestedRole == Role.ADMIN) {
+      throw new InvalidRoleException(
+          "ADMIN accounts cannot be created through self-registration; ask an existing"
+              + " administrator");
+    } else {
+      effectiveRole = requestedRole;
+    }
+
     User user = new User();
     user.setFullName(request.getFullName().trim());
     user.setEmail(normalizedEmail);
     user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
     user.setPhoneNumber(request.getPhoneNumber());
-    user.setRole(requestedRole);
+    user.setRole(effectiveRole);
     user.setActive(true);
 
     User saved = userRepository.save(user);

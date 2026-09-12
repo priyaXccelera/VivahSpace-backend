@@ -12,6 +12,7 @@ import com.example.userservice.entity.Role;
 import com.example.userservice.entity.User;
 import com.example.userservice.exception.EmailAlreadyExistsException;
 import com.example.userservice.exception.InvalidCredentialsException;
+import com.example.userservice.exception.InvalidRoleException;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.security.JwtService;
 import java.util.Optional;
@@ -58,6 +59,7 @@ class AuthServiceTest {
     request.setPassword("secretPass1");
 
     when(userRepository.existsByEmailIgnoreCase("jane@example.com")).thenReturn(false);
+    when(userRepository.existsByRole(Role.ADMIN)).thenReturn(true);
     when(passwordEncoder.encode("secretPass1")).thenReturn("hashed");
     when(userRepository.save(any(User.class)))
         .thenAnswer(
@@ -84,14 +86,14 @@ class AuthServiceTest {
   }
 
   @Test
-  void register_whenRoleSpecified_usesRequestedRole() {
+  void register_whenNoAdminExists_promotesFirstUserToAdmin() {
     RegisterRequest request = new RegisterRequest();
-    request.setFullName("Admin User");
-    request.setEmail("admin@example.com");
+    request.setFullName("First User");
+    request.setEmail("first@example.com");
     request.setPassword("secretPass1");
-    request.setRole(Role.ADMIN);
 
-    when(userRepository.existsByEmailIgnoreCase("admin@example.com")).thenReturn(false);
+    when(userRepository.existsByEmailIgnoreCase("first@example.com")).thenReturn(false);
+    when(userRepository.existsByRole(Role.ADMIN)).thenReturn(false);
     when(passwordEncoder.encode("secretPass1")).thenReturn("hashed");
     when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
     when(jwtService.generateToken(any(User.class))).thenReturn("jwt-token");
@@ -100,6 +102,44 @@ class AuthServiceTest {
     AuthResponse response = authService.register(request);
 
     assertThat(response.getUser().getRole()).isEqualTo(Role.ADMIN);
+  }
+
+  @Test
+  void register_whenNoAdminExists_promotesFirstUserEvenIfCustomerRequested() {
+    RegisterRequest request = new RegisterRequest();
+    request.setFullName("First User");
+    request.setEmail("first@example.com");
+    request.setPassword("secretPass1");
+    request.setRole(Role.CUSTOMER);
+
+    when(userRepository.existsByEmailIgnoreCase("first@example.com")).thenReturn(false);
+    when(userRepository.existsByRole(Role.ADMIN)).thenReturn(false);
+    when(passwordEncoder.encode("secretPass1")).thenReturn("hashed");
+    when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+    when(jwtService.generateToken(any(User.class))).thenReturn("jwt-token");
+    when(jwtService.getExpirationMs()).thenReturn(1_800_000L);
+
+    AuthResponse response = authService.register(request);
+
+    assertThat(response.getUser().getRole()).isEqualTo(Role.ADMIN);
+  }
+
+  @Test
+  void register_whenAdminAlreadyExistsAndAdminRequested_throwsInvalidRoleException() {
+    RegisterRequest request = new RegisterRequest();
+    request.setFullName("Impostor");
+    request.setEmail("impostor@example.com");
+    request.setPassword("secretPass1");
+    request.setRole(Role.ADMIN);
+
+    when(userRepository.existsByEmailIgnoreCase("impostor@example.com")).thenReturn(false);
+    when(userRepository.existsByRole(Role.ADMIN)).thenReturn(true);
+
+    assertThatThrownBy(() -> authService.register(request))
+        .isInstanceOf(InvalidRoleException.class)
+        .hasMessageContaining("self-registration");
+
+    verify(userRepository, never()).save(any(User.class));
   }
 
   @Test
