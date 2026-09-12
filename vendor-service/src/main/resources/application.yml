@@ -1,0 +1,26 @@
+server:
+  port: 25485
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: vendor-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    path: /api-docs

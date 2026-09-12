@@ -1,0 +1,63 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.10)
+
+2026-09-10T14:17:49.339Z  INFO 268428 --- [gateway-service] [           main] c.e.g.GatewayServiceApplication          : Starting GatewayServiceApplication using Java 21.0.12.1 with PID 268428 (/home/himanshu.jangra/backendX/backend/outputs/df4019bb-2d72-461f-ba13-de7d0afeefcf/gateway-service/target/gateway-service.jar started by himanshu.jangra in /home/himanshu.jangra/backendX/backend/outputs/df4019bb-2d72-461f-ba13-de7d0afeefcf)
+2026-09-10T14:17:49.347Z  INFO 268428 --- [gateway-service] [           main] c.e.g.GatewayServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2026-09-10T14:17:52.806Z  INFO 268428 --- [gateway-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a0eb643f-8c65-396a-8ab9-c61de34af137
+2026-09-10T14:17:53.025Z  WARN 268428 --- [gateway-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-10T14:17:53.051Z  WARN 268428 --- [gateway-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-09-10T14:17:53.061Z  WARN 268428 --- [gateway-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-10T14:17:53.066Z  WARN 268428 --- [gateway-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-09-10T14:17:53.068Z  WARN 268428 --- [gateway-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [loadBalancerWebClientBuilderBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-09-10T14:17:56.673Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-09-10T14:17:56.674Z  INFO 268428 --- [gateway-service] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-09-10T14:17:57.892Z  INFO 268428 --- [gateway-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-09-10T14:17:59.027Z  INFO 268428 --- [gateway-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-09-10T14:17:59.080Z  WARN 268428 --- [gateway-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-10T14:17:59.236Z  INFO 268428 --- [gateway-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-10T14:17:59.329Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-10T14:17:59.349Z  INFO 268428 --- [gateway-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-10T14:17:59.374Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-10T14:17:59.374Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-10T14:17:59.374Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-10T14:17:59.374Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-10T14:17:59.376Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-10T14:17:59.377Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-10T14:17:59.378Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-10T14:18:00.408Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-10T14:18:00.415Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-10T14:18:00.421Z  INFO 268428 --- [gateway-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-10T14:18:00.434Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1789049880432 with initial instances count: 1
+2026-09-10T14:18:00.441Z  INFO 268428 --- [gateway-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application GATEWAY-SERVICE with eureka with status UP
+2026-09-10T14:18:00.443Z  INFO 268428 --- [gateway-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1789049880443, current=UP, previous=STARTING]
+2026-09-10T14:18:00.448Z  INFO 268428 --- [gateway-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GATEWAY-SERVICE/apix-dev.us-central1-a.c.concrete-list-499309-v1.internal:gateway-service:27193: registering service...
+2026-09-10T14:18:00.571Z  INFO 268428 --- [gateway-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GATEWAY-SERVICE/apix-dev.us-central1-a.c.concrete-list-499309-v1.internal:gateway-service:27193 - registration status: 204
+2026-09-10T14:18:00.914Z  INFO 268428 --- [gateway-service] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 27193
+2026-09-10T14:18:00.920Z  INFO 268428 --- [gateway-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 27193
+2026-09-10T14:18:00.979Z  INFO 268428 --- [gateway-service] [           main] c.e.g.GatewayServiceApplication          : Started GatewayServiceApplication in 13.238 seconds (process running for 14.773)
+2026-09-10T14:18:00.984Z  INFO 268428 --- [gateway-service] [ionShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application GATEWAY-SERVICE with eureka with status DOWN
+2026-09-10T14:18:00.992Z  INFO 268428 --- [gateway-service] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1789049880992, current=DOWN, previous=UP]
+2026-09-10T14:18:00.994Z  INFO 268428 --- [gateway-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GATEWAY-SERVICE/apix-dev.us-central1-a.c.concrete-list-499309-v1.internal:gateway-service:27193: registering service...
+2026-09-10T14:18:01.016Z  INFO 268428 --- [gateway-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GATEWAY-SERVICE/apix-dev.us-central1-a.c.concrete-list-499309-v1.internal:gateway-service:27193 - registration status: 204
+2026-09-10T14:18:03.092Z  INFO 268428 --- [gateway-service] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2026-09-10T14:18:06.095Z  INFO 268428 --- [gateway-service] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2026-09-10T14:18:06.116Z  INFO 268428 --- [gateway-service] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_GATEWAY-SERVICE/apix-dev.us-central1-a.c.concrete-list-499309-v1.internal:gateway-service:27193 - deregister  status: 200
+2026-09-10T14:18:06.116Z  INFO 268428 --- [gateway-service] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
